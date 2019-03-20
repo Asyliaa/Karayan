@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ingredient_three
+  - Ingredient_two
+  - Ingredient_one
+  - recipe
+  - enterHouse
+  - cauldron
+  - exitHouse
   layers:
   - Default
   - TransparentFX
