@@ -11,6 +11,7 @@ TagManager:
   - enterHouse
   - cauldron
   - exitHouse
+  - start
   layers:
   - Default
   - TransparentFX

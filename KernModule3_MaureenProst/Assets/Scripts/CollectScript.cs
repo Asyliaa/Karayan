@@ -28,7 +28,7 @@ public class CollectScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        ingredientText.text = "Look for Allie, your familiar. The footsteps outside of your house might help.";
+        ingredientText.text = " ";
         popupText.text = "";
         questText.text = "Quests";
         
@@ -100,7 +100,7 @@ public class CollectScript : MonoBehaviour {
     IEnumerator WaitForItTwo(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -117,6 +117,12 @@ public class CollectScript : MonoBehaviour {
         {
             popupText.text = "Press Space to leave your house.";
             exitHouseBool = true;
+
+        }
+        if (other.gameObject.CompareTag("start"))
+        {
+            ingredientText.text = "Look for Allie, your familiar. Maybe the footsteps outside your house can help you..";
+         
 
         }
 

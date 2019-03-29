@@ -363,6 +363,7 @@
     <Compile Include="Assets\PostProcessing\Runtime\Utils\RenderTextureFactory.cs" />
     <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
     <Compile Include="Assets\Scripts\CollectScript.cs" />
+    <Compile Include="Assets\Scripts\StartGameNarrative.cs" />
     <Compile Include="Assets\Scripts\ThirdPersonCameraController.cs" />
     <Compile Include="Assets\Scripts\ThirdPersonCharacterController.cs" />
   </ItemGroup>

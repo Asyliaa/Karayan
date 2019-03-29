@@ -25,9 +25,9 @@ MonoBehaviour:
         motionVectorsResolution: 24
         motionVectorsAmplitude: 64
   fog:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
-      excludeSkybox: 1
+      excludeSkybox: 0
   antialiasing:
     m_Enabled: 1
     m_Settings:
@@ -72,14 +72,14 @@ MonoBehaviour:
     m_Enabled: 0
     m_Settings:
       focusDistance: 5.9
-      aperture: 5.6
-      focalLength: 50
+      aperture: 18.6
+      focalLength: 218
       useCameraFov: 0
       kernelSize: 1
   motionBlur:
     m_Enabled: 1
     m_Settings:
-      shutterAngle: 172
+      shutterAngle: 22
       sampleCount: 5
       frameBlending: 0
   eyeAdaptation:
@@ -97,17 +97,17 @@ MonoBehaviour:
       logMin: -15
       logMax: 1
   bloom:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       bloom:
-        intensity: 0.5
-        threshold: 1.1
-        softKnee: 0.5
-        radius: 4
-        antiFlicker: 0
+        intensity: 0.36
+        threshold: 2.8
+        softKnee: 0.53
+        radius: 3.1
+        antiFlicker: 1
       lensDirt:
         texture: {fileID: 0}
-        intensity: 3
+        intensity: 32.77
   colorGrading:
     m_Enabled: 1
     m_Settings:
