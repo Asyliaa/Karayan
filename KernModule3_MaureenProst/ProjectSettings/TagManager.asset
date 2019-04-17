@@ -12,6 +12,9 @@ TagManager:
   - cauldron
   - exitHouse
   - start
+  - gate
+  - popup
+  - finish
   layers:
   - Default
   - TransparentFX

@@ -9,11 +9,15 @@ public class CollectScript : MonoBehaviour {
     public Text ingredientText;
     public Text popupText;
     public Text questText;
+    public Image img;
+    public bool isImgOn;
+    public GameObject other; 
 
     private bool enterHouseBool;
     private bool exitHouseBool; 
     private bool brewBool;
-    private bool potionBool; 
+    private bool potionBool;
+    private bool enterGateBool; 
 
     private int objectCount; 
     // 0 = geen items
@@ -35,7 +39,10 @@ public class CollectScript : MonoBehaviour {
         enterHouseBool = false;
         brewBool = false;
         potionBool = false;
-        exitHouseBool = false; 
+        exitHouseBool = false;
+        isImgOn = false;
+        img.enabled = false;
+        enterGateBool = false; 
 	}
 
     private void Update()
@@ -81,13 +88,25 @@ public class CollectScript : MonoBehaviour {
                     potionBool = true;
                     ingredientText.text = "Return to the mysterious place";
                     popupText.text = "Brewed the 'all-seeing' potion!";
-                
 
+                brewBool = false;
            
             }
 
             
             
+        }
+        if (enterGateBool== true)
+        {
+
+
+            StartCoroutine(WaitForItTwo(1.0f));
+
+
+
+
+
+
         }
     }
 
@@ -103,67 +122,106 @@ public class CollectScript : MonoBehaviour {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    IEnumerator WaitForIMG(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        isImgOn = false;
+        img.enabled = false;
+        popupText.text = "";
+    }
+
     private void OnTriggerEnter(Collider other)
     {
 
         if (other.gameObject.CompareTag("enterHouse"))
         {
-            popupText.text = "Press Space to enter your house.";
+            isImgOn = true;
+            img.enabled = true;
+            popupText.text = "Press F to enter your house.";
             enterHouseBool = true; 
             
+        }
+        if (other.gameObject.CompareTag("gate"))
+        {
+           
+            enterGateBool = true;
+
         }
 
         if (other.gameObject.CompareTag("exitHouse"))
         {
-            popupText.text = "Press Space to leave your house.";
+            isImgOn = true;
+            img.enabled = true;
+            popupText.text = "Press F to leave your house.";
             exitHouseBool = true;
 
         }
         if (other.gameObject.CompareTag("start"))
         {
+           
             ingredientText.text = "Look for Allie, your familiar. Maybe the footsteps outside your house can help you..";
          
 
         }
 
+        if (other.gameObject.CompareTag("finish"))
+        {
+            ingredientText.text = "Investigate the gate";
+        }
+
         if (other.gameObject.CompareTag("cauldron"))
         {
             brewBool = true;
+
+            isImgOn = true;
+            img.enabled = true;
             popupText.text = "Press F to brew potion";
         }
 
         if (other.gameObject.CompareTag("recipe"))
         {
-            ingredientText.text = "Ingredients: Ingredient one, Ingredient two, Ingredient three";
+            isImgOn = true;
+            img.enabled = true;
+            ingredientText.text = "Ingredients: Mushroom      Fairy dust      " +
+                "Magic leaf";
             popupText.text = "You found a recipe. It has the ingredients on it for an 'all-seeing' potion!";
         }
         if (other.gameObject.CompareTag("Ingredient_one"))
         {
             if (objectCount == 0)
             {
-                ingredientText.text = "Ingredients: Ingredient two, Ingredient three ";
-                popupText.text = "Got Ingredient one!";
+                isImgOn = true;
+                img.enabled = true;
+                ingredientText.text = "Ingredients: Fairy dust      " +
+                "magic leaf";
+                popupText.text = "Got the mushroom!";
                 objectCount = 1;
             }
 
             if (objectCount == 2)
             {
+                isImgOn = true;
+                img.enabled = true;
                 ingredientText.text = "Ingredients: Ingredient three ";
-                popupText.text = "Got Ingredient one!";
+                popupText.text = "Got the mushroom!";
                 objectCount = 3;
             }
 
             if (objectCount == 4)
             {
-                ingredientText.text = "Ingredients: Ingredient two";
-                popupText.text = "Got Ingredient one!";
+                isImgOn = true;
+                img.enabled = true;
+                ingredientText.text = "Ingredients: Magic leaf";
+                popupText.text = "Got the mushroom!";
                 objectCount = 7;
             }
 
             if (objectCount == 6)
             {
-                ingredientText.text = "Got everything!";
-                popupText.text = "Return to your home to brew the potion.";
+                isImgOn = true;
+                img.enabled = true;
+                ingredientText.text = "Return to your home to brew the potion.";
+                popupText.text = "Got everything!";
                 objectCount = 8;
 
             }
@@ -174,6 +232,8 @@ public class CollectScript : MonoBehaviour {
         {
             if (objectCount == 0)
             {
+                isImgOn = true;
+                img.enabled = true;
                 ingredientText.text = "Ingredients: Ingredient one, Ingredient three ";
                 popupText.text = "Got Ingredient two!";
                 objectCount = 2;
@@ -181,6 +241,8 @@ public class CollectScript : MonoBehaviour {
 
             if (objectCount == 1)
             {
+                isImgOn = true;
+                img.enabled = true;
                 ingredientText.text = "Ingredients: Ingredient three ";
                 popupText.text = "Got Ingredient two!";
                 objectCount = 3;
@@ -188,6 +250,8 @@ public class CollectScript : MonoBehaviour {
 
             if (objectCount == 4)
             {
+                isImgOn = true;
+                img.enabled = true;
                 ingredientText.text = "Ingredients: Ingredient one ";
                 popupText.text = "Got Ingredient two!";
                 objectCount = 6;
@@ -196,8 +260,10 @@ public class CollectScript : MonoBehaviour {
 
             if (objectCount == 7)
             {
-                ingredientText.text = "Got everything!";
-                popupText.text = "Return to your home to brew the potion.";
+                isImgOn = true;
+                img.enabled = true;
+                ingredientText.text = "Return to your home to brew the potion.";
+                popupText.text = "Got everything!";
                 objectCount = 8;
             }
 
@@ -208,13 +274,18 @@ public class CollectScript : MonoBehaviour {
         {
             if (objectCount == 0)
             {
-                ingredientText.text = "Ingredients: Ingredient one, Ingredient two";
-                popupText.text = "Got Ingredient three!";
+                isImgOn = true;
+                img.enabled = true;
+                ingredientText.text = "Ingredients: Mushroom        " +
+                "Magic leaf";
+                popupText.text = "Got the fairy dust!";
                 objectCount = 4;
             }
 
             if (objectCount == 1)
             {
+                isImgOn = true;
+                img.enabled = true;
                 ingredientText.text = "Ingredients: Ingredient two ";
                 popupText.text = "Got Ingredient three!";
                 objectCount = 7;
@@ -222,6 +293,8 @@ public class CollectScript : MonoBehaviour {
 
             if (objectCount == 2)
             {
+                isImgOn = true;
+                img.enabled = true;
                 ingredientText.text = "Ingredients: Ingredient one ";
                 popupText.text = "Got Ingredient three!";
                 objectCount = 6;
@@ -229,8 +302,10 @@ public class CollectScript : MonoBehaviour {
 
             if (objectCount == 3)
             {
-                ingredientText.text = "Got everything!";
-                popupText.text = "Return to your home to brew the potion.";
+                isImgOn = true;
+                img.enabled = true;
+                ingredientText.text = "Return to your home to brew the potion.";
+                popupText.text = "Got everything!";
                 objectCount = 8;
             }
 
@@ -245,6 +320,62 @@ public class CollectScript : MonoBehaviour {
             popupText.text = "";
             exitHouseBool = false;
 
+        }
+        if (other.gameObject.CompareTag("start"))
+        {
+            isImgOn = false;
+            img.enabled = false;
+            ingredientText.text = " ";
+            Destroy(other);
+        }
+
+        if (other.gameObject.CompareTag("cauldron"))
+        {
+            
+            isImgOn = false;
+            img.enabled = false;
+
+            popupText.text = " ";
+        }
+
+
+        if (other.gameObject.CompareTag("enterHouse"))
+        {
+
+            isImgOn = false;
+            img.enabled = false;
+
+            popupText.text = " ";
+   
+
+        }
+        if (other.gameObject.CompareTag("exitHouse"))
+        {
+            isImgOn = false;
+            img.enabled = false;
+            popupText.text = "";
+  
+
+        }
+        if (other.gameObject.CompareTag("recipe"))
+        {
+            StartCoroutine(WaitForIMG(3.0f));
+            ingredientText.text = "Ingredients: Mushroom      Fairy dust      " +
+                "Magic leaf";
+
+        }
+
+        if (other.gameObject.CompareTag("Ingredient_one"))
+        {
+            StartCoroutine(WaitForIMG(3.0f));
+        }
+        if (other.gameObject.CompareTag("Ingredient_two"))
+        {
+            StartCoroutine(WaitForIMG(3.0f));
+        }
+        if (other.gameObject.CompareTag("Ingredient_three"))
+        {
+            StartCoroutine(WaitForIMG(3.0f));
         }
     }
 }

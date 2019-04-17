@@ -100,7 +100,7 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       bloom:
-        intensity: 13.3
+        intensity: 0.86
         threshold: 1.1
         softKnee: 0.468
         radius: 1.57
@@ -113,10 +113,10 @@ MonoBehaviour:
     m_Settings:
       tonemapping:
         tonemapper: 2
-        neutralBlackIn: 0.085
-        neutralWhiteIn: 5.9
-        neutralBlackOut: 0
-        neutralWhiteOut: 10
+        neutralBlackIn: 0.1
+        neutralWhiteIn: 1
+        neutralBlackOut: -0.07
+        neutralWhiteOut: 18.7
         neutralWhiteLevel: 5.3
         neutralWhiteClip: 10
       basic:
@@ -317,12 +317,12 @@ MonoBehaviour:
       size: 1
       luminanceContribution: 0.8
   vignette:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       mode: 0
       color: {r: 0, g: 0, b: 0, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 0.45
+      intensity: 0.672
       smoothness: 0.2
       roundness: 1
       mask: {fileID: 0}

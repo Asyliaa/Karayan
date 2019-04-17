@@ -251,8 +251,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1964312410968314}
-  m_LocalRotation: {x: -0, y: 0.020993868, z: -0, w: 0.99977964}
-  m_LocalPosition: {x: -2.9, y: 34.4, z: -45.7}
+  m_LocalRotation: {x: -0, y: 0.7146367, z: -0, w: 0.6994959}
+  m_LocalPosition: {x: 407.6, y: 37.5, z: 753}
   m_LocalScale: {x: 9.420356, y: 18.28516, z: 9.420356}
   m_Children:
   - {fileID: 4579422382747054}
@@ -415,7 +415,7 @@ MeshRenderer:
   m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -570,7 +570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: d22a2111221d48d4a89970076c656764, type: 2}
+  profile: {fileID: 11400000, guid: 9d57a78a808e16741baadc19a46ac290, type: 2}
 --- !u!114 &114309755686039076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -585,6 +585,9 @@ MonoBehaviour:
   ingredientText: {fileID: 0}
   popupText: {fileID: 0}
   questText: {fileID: 0}
+  img: {fileID: 0}
+  isImgOn: 0
+  other: {fileID: 0}
 --- !u!114 &114452512313495974
 MonoBehaviour:
   m_ObjectHideFlags: 1
